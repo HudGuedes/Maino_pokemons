@@ -1,0 +1,32 @@
+<h1 class="text-center text-primary">
+	<%= @team.name %> <%= link_to('Adicionar pokemon', new_pokemon_path(team_id: params[:id]), class: 'btn btn-primary float-end') %>
+</h1>
+<% if @team.pokemons.present? %>
+	<h4 class="mt-2">Pokemons</h4>
+	<hr />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Especie</th>
+				<th class="text-center">Imagem</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @team.pokemons.each do |pokemon| %>
+			<tr>
+				<td><%= pokemon.name %></td>
+				<td><%= pokemon.species %></td>
+				<td class="text-center">
+					<img src="<%= pokemon.sprite %>" style="width: 15%">
+				</td>
+				<td><%= link_to('Deletar', pokemon_path(pokemon.id), method: :delete, class: 'btn btn-primary float-end', data: {confirm: 'Tem certeza?'}) %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<div class="alert alert-info">
+		Nenhum pokemon cadastrado nesse time
+	</div>
+<% end %>

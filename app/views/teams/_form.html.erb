@@ -1,0 +1,13 @@
+<div class="container">
+  <%= form_with model: @team do |form| %>
+    <div class="form-group mb-3">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", autofocus: true %>
+      <% @team.errors.full_messages_for(:name).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+    
+    <%= form.submit "Criar time", class: "btn btn-primary" %>
+  <% end %>
+</div>

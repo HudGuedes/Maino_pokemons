@@ -1,0 +1,23 @@
+<h3 class="text-center text-primary">Selecione seus pokemons </h3>
+<hr/>
+
+<%= form_with url: pokemons_path, method: :post do |form| %>
+	<table id="pokemon_id" class="table">
+		<thead>
+			<tr>
+				<td>#</td>
+				<th>Nome</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @pokemons.each do |pokemon| %>
+				<tr>
+						<td><input type="checkbox" name="names[]" value="<%= pokemon['name']%>"></td>
+						<td><%= pokemon['name'] %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= form.hidden_field :team_id, value: params[:team_id] %>
+	<%= form.submit 'Salvar', class: 'btn btn-primary float-end mt-2' %>
+<% end %>

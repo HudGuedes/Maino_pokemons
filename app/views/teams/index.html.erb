@@ -1,0 +1,43 @@
+<h3 class="text-center">
+  <p class="text-primary">Seu time
+  	<%= link_to('Adicionar time', new_team_path, class: 'btn btn-primary float-end') %>
+  </p>
+</h3>
+<hr/>
+
+<% if @teams.nil? %>
+	<div class="alert alert-info">
+		Nenhum pokemon adicionado
+	</div>
+<% else %>
+        <table class="table">
+        	<thead>
+        		<tr>
+        			<th>Nome</th>
+        			<th>Opções</th>
+        		</tr>
+        	</thead>
+          <tbody>
+          	<% @teams.each do |team| %>
+							<tr>
+								<td><%= team.name %></td>
+								<td>            	
+									<div class="dropdown">
+		            		<span class="navbar-text">
+								    	<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+														    Opções
+										  </button>
+										  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+										  	<li><%= link_to('Detalhes', team_path(team.id), class: 'dropdown-item') %></li>
+										    <li><%= link_to('Editar', edit_team_path(team.id), class: 'dropdown-item') %></li>
+										    <li><hr class="dropdown-divider"></li>
+										    <li><%= link_to('Deletar', team_path(team.id), method: :delete, class: 'dropdown-item', data: {confirm: 'Tem certeza?'}) %></li>
+										  </ul>
+										</span>
+									</div>
+								</td>
+							</tr>
+						<% end %>
+           </tbody>
+        </table>
+<% end %>
