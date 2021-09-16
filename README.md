@@ -9,6 +9,10 @@ Primeiramente quero agradecer a oportunidade que me foi dado para realizar esse 
 
 <h1>Modo de utilizar;</h1>
 
+Heroku: https://mainopokemons.herokuapp.com
+
+ou
+
 Clone o repositório para a sua máquina, copie e cole: git clone https://github.com/HudGuedes/Maino_pokemons Após isso, entre na pasta onde você clonou o projeto e digite os comandos:
 
 - yarn install
