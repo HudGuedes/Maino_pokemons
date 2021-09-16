@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!, except: :show
 
   def index
-    @teams = Team.all
+    @teams = current_user.teams
   end
 
   def show
